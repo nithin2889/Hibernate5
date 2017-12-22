@@ -21,9 +21,12 @@ public class Employee {
 	@Column(name="employee_id")
 	// @GeneratedValue(strategy=GenerationType.AUTO, generator="empid_generator")
 	// @SequenceGenerator(name="empid_generator", initialValue=1, allocationSize=1, sequenceName="empid_seq")
+	// ------------------------------------------------------------------------------------------------------
 	// @GeneratedValue(strategy=GenerationType.IDENTITY)
+	// ------------------------------------------------------------------------------------------------------
 	// @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="empid_gen")
 	// @SequenceGenerator(name="empid_gen", initialValue=1, allocationSize=1, sequenceName="empid_seq")
+	// ------------------------------------------------------------------------------------------------------
 	@GeneratedValue(strategy=GenerationType.TABLE, generator="empid_gen")
 	@TableGenerator(name="empid_gen", initialValue=1, allocationSize=1, table="empid_seq")
 	private Integer employeeId;
