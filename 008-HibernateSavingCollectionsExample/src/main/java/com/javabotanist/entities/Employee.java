@@ -45,9 +45,9 @@ public class Employee {
 	private Double salary;
 	
 	@ElementCollection(fetch=FetchType.EAGER) // lazy or eager fetch of data
-	@JoinTable(name="emp_address", joinColumns=@JoinColumn(name="employee_id")) // to customize the address table's column names
-	@GenericGenerator(name="sequence_gen", strategy="sequence") // primary key generator - sequence
-	@CollectionId(columns={@Column(name="address_id")}, generator="sequence_gen", type=@Type(type = "int")) // address table PK column
+	@JoinTable(name="address_table", joinColumns=@JoinColumn(name="employee_id")) // to customize the address table's column names
+	@GenericGenerator(name="sequence_gen", strategy = "sequence") // primary key generator - sequence
+	@CollectionId (columns = { @Column(name="address_id") }, generator = "sequence_gen", type = @Type(type = "int")) // address table PK column
 	private Collection<Address> addressList = new HashSet<>();
 	
 	public Collection<Address> getAddressList() {
