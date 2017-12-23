@@ -35,7 +35,7 @@ public class FetchDataClientTest {
 	private static void getSpecificFieldsByEmployeeId() {
 		try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 			String HQL = "SELECT emp.employeeName, emp.salary, addr.city, addr.pincode FROM Employee emp "
-					+ "LEFT JOIN emp.addressList addr WHERE emp.employeeId=:empId";
+					+ "LEFT JOIN emp.addressList addr ON emp.employeeId=:empId";
 			Query<Object[]> query = session.createQuery(HQL);
 			query.setParameter("empId", 1);
 			List<Object[]> list = query.list();
