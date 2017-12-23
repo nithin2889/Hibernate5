@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Employee extends Person {
 
 	@Column(name="salary", columnDefinition="DECIMAL(7,2)")
-	// here 7 is the integer part and 2 is the decimal part of the number. Ex: 1234567.00
+	// here 7 is the total number of digits and 2 is the decimal part of the number. Ex: 80000.12
 	private Double salary;
 	
 	@Column(name="date_of_joining")
