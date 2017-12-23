@@ -10,7 +10,7 @@ import com.javabotanist.util.HibernateUtil;
 public class HQLClientTest {
 
 	public static void main(String[] args) {
-		// getEmployeeAndAddressByEmployeeId();
+		getEmployeeAndAddressByEmployeeId();
 		getEmployeeAndAddressByAddressId();
 	}
 
