@@ -27,7 +27,7 @@
         <property name="hibernate.format_sql">true</property>
         
         <!-- Drop and re-create the database schema on startup automatically -->
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         
         <!-- Names and annotated entity class -->
         <mapping class="com.javabotanist.entities.Employee" />
