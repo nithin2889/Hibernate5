@@ -37,7 +37,7 @@ public class Employee {
 	private Double salary;
 	
 	// @OneToOne(cascade=CascadeType.ALL)
-	@OneToOne(cascade=CascadeType.PERSIST)
+	@OneToOne(cascade=CascadeType.PERSIST) // when used PERSIST we save record using persist() method.
 	@JoinColumn(name="address_id")
 	private Address address;
 	
