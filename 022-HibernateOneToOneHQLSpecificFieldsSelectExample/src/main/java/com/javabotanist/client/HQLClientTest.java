@@ -35,18 +35,4 @@ public class HQLClientTest {
 		}
 	}
 
-	/*private static void getEmployeeAndAddressByEmployeeId() {
-		try(Session session = HibernateUtil.getSessionFactory().openSession()) {
-			String HQL = "FROM Employee emp LEFT JOIN FETCH emp.address WHERE emp.employeeId = :empId";
-			Query<Employee> query = session.createQuery(HQL, Employee.class);
-			query.setParameter("empId", 1);
-			Employee employee = query.uniqueResult();
-			System.out.println(employee);
-			Address address = employee.getAddress();
-			System.out.println(address);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}*/
-
 }
