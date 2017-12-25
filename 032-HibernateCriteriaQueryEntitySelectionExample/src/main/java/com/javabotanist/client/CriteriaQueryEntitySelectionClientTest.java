@@ -17,13 +17,12 @@ public class CriteriaQueryEntitySelectionClientTest {
 	
 	public static void main(String[] args) {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			
 			CriteriaBuilder builder = session.getCriteriaBuilder();
 			CriteriaQuery<Employee> criteriaQuery = builder.createQuery(Employee.class);
 			Root<Employee> root = criteriaQuery.from(Employee.class);
 			criteriaQuery.select(root);
-			
 			criteriaQuery.where(builder.equal(root.get("employeeId"), 2));
-			
 			Query<Employee> query = session.createQuery(criteriaQuery);
 			List<Employee> empList = query.list();
 			empList.forEach(System.out::println);
