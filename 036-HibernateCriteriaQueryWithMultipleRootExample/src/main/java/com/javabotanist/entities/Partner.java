@@ -47,5 +47,10 @@ public class Partner {
 	public void setVersion(int version) {
 		this.version = version;
 	}
+
+	@Override
+	public String toString() {
+		return "Partner [id=" + id + ", name=" + name + ", version=" + version + "]";
+	}
 	
 }
