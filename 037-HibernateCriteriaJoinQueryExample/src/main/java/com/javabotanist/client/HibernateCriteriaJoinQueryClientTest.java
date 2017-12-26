@@ -22,7 +22,8 @@ public class HibernateCriteriaJoinQueryClientTest {
 			CriteriaQuery<Phone> criteriaQuery = builder.createQuery(Phone.class);
 			
 			Root<Phone> root = criteriaQuery.from(Phone.class);
-			root.join("person");
+			root.fetch("person");
+			root.fetch("calls");
 			
 			criteriaQuery.where(builder.isNotEmpty(root.get("calls")));
 			
