@@ -26,7 +26,7 @@ public class HibernateCriteriaBuilderGroupByAndHavingClauseClientTest {
 			criteriaQuery.multiselect(builder.count(root.get("name")), builder.sum(root.get("salary")),
 					root.get("department"));
 
-			criteriaQuery.groupBy(root.get("department"),root.get("department_id"));
+			criteriaQuery.groupBy(root.get("department"));
 			criteriaQuery.having(builder.greaterThan(builder.sum(root.get("salary")), 200000.00));
 			Query<Object[]> query = session.createQuery(criteriaQuery);
 
