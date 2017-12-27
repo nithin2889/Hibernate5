@@ -22,6 +22,8 @@ public class HibernateCriteriaJoinQueryClientTest {
 			CriteriaQuery<Phone> criteriaQuery = builder.createQuery(Phone.class);
 			
 			Root<Phone> root = criteriaQuery.from(Phone.class);
+
+			// Use fetch instead of select or multiselect to override the Lazy loading and load data in Eager mode.
 			root.fetch("person");
 			root.fetch("calls");
 			
