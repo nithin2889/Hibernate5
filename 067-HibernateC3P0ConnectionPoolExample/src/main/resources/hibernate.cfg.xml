@@ -1,0 +1,46 @@
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/hibernate_test_db</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">password</property>
+        
+        <!-- SQL Dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        
+        <!-- Optional -->
+        <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+        
+        <!-- hibernate.c3p0.min_size – Minimum number of JDBC connections in the pool. Hibernate default: 1 -->
+        <property name="hibernate.c3p0.min_size">5</property>
+        
+        <!-- hibernate.c3p0.max_size – Maximum number of JDBC connections in the pool. Hibernate default: 100 -->
+        <property name="hibernate.c3p0.max_size">20</property>
+        
+        <!-- hibernate.c3p0.timeout – When an idle connection is removed from the pool (in second). Hibernate default: 0, never expires. -->
+        <property name="hibernate.c3p0.timeout">300</property>
+        
+        <!-- hibernate.c3p0.max_statements – Number of prepared statements that will be cached. Increases performance. Hibernate default: 0 , caching is disabled. -->
+        <property name="hibernate.c3p0.max_statements">50</property>
+        
+        <!-- hibernate.c3p0.idle_test_period – idle time in seconds before a connection is automatically validated. Hibernate default: 0 -->
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        
+        <property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+
+		<mapping class="com.javabotanist.entities.User" />
+    </session-factory>
+</hibernate-configuration>
