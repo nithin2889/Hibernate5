@@ -1,0 +1,29 @@
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+    	<!-- Connection Data Source -->
+    	<property name="hibernate.connection.datasource">java:comp/env/jdbc/MyDB</property>
+    	
+        <!-- SQL Dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        
+        <!-- Echo all executed SQL to stdout in formatted way -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        
+        <!-- Drop and re-create the database schema on startup automatically -->
+        <property name="hibernate.hbm2ddl.auto">create</property>
+        
+        <!-- Names and annotated entity class -->
+        <mapping class="com.javabotanist.entities.User" />
+    </session-factory>
+</hibernate-configuration>
