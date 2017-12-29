@@ -11,10 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.NamedSubgraph;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="project")
+@NamedEntityGraph(name="project.employees", 
+attributeNodes=@NamedAttributeNode(value="employees",subgraph="project.employees.department"),
+subgraphs=@NamedSubgraph(name="project.employees.department",attributeNodes={@NamedAttributeNode(value="department")}))
 public class Project {
 
 	@Id

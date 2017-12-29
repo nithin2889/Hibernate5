@@ -10,35 +10,28 @@ import com.javabotanist.entities.Employee;
 import com.javabotanist.entities.Project;
 import com.javabotanist.util.HibernateUtil;
 
-public class HibernateDynamicFetchingUsingJPAGraphClientTest {
+public class HibernateDynamicFetchingUsingJPASubGraphClientTest {
 
 	public static void main(String[] args) {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			Long employeeId = 1L;
+			Long projectId = 1L;
+			Project project = session.find(Project.class, projectId, 
+					Collections.singletonMap("javax.persistence.fetchgraph", 
+							session.getEntityGraph("project.employees")));
 			
-			Employee employee = session.find(Employee.class, employeeId, 
-					Collections.singletonMap("javax.persistence.fetchgraph", "employee.projects"));
-			
-			if (employee != null) {
-				System.out.println("::Employee Details::");
+			System.out.println("::Project Details::");
+			System.out.println(project.getId()+"\t"+project.getProjectName());
+			System.out.println("::Employee Details::");
+			List<Employee> employees = project.getEmployees();
+			for (Employee employee : employees) {
 				System.out.println(employee.getId()+"\t"+employee.getEmployeeName()+"\t"+
 					employee.getUserName()+"\t"+employee.getAccessLevel());
 				
-				List<Project> projects = employee.getProjects();
-				System.out.println("::Project Details::");
-				for (Project project : projects) {
-					System.out.println(project.getId()+"\t"+project.getProjectName());
-				}
-				
-				System.out.println("::Department Details::");
 				Department department = employee.getDepartment();
+				System.out.println("::Employee's Department Details::");
 				if(department != null) {
 					System.out.println(department.getId()+"\t"+department.getDeptName());
-				} else {
-					System.out.println("Department details not found!");
 				}
-			} else {
-				System.out.println("Employee not found with provided credentials.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
