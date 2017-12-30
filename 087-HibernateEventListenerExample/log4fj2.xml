@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<!-- Console Appender -->
+		<Console name="consoleAppender" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{yyyy-MMM-dd HH:mm:ss a}  %-5level %logger{36} - %msg%n" />
+		</Console>
+
+	</Appenders>
+
+	<Loggers>
+		<!-- Logging event in hibernate -->
+		<Logger name="com.javabotanist.events" level="trace" additivity="false">
+			<AppenderRef ref="consoleAppender" />
+		</Logger>
+
+		<Root level="error">
+			<AppenderRef ref="consoleAppender" />
+		</Root>
+	</Loggers>
+</Configuration>
